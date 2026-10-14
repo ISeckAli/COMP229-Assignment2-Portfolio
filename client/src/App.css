@@ -1,0 +1,4304 @@
+/* =========================================================
+   GLOBAL PORTFOLIO STYLES
+   Main stylesheet for the portfolio application. Organizes shared
+   navigation, page layouts, interactive components, and responsive
+   behaviour across the complete React site.
+   ========================================================= */
+
+
+/* =========================
+   HEADER / NAVIGATION
+   Styles the persistent site header, custom logo, navigation links,
+   active-route state, and hover feedback used across all pages.
+   ========================= */
+
+.site-header {
+  position: relative;
+  z-index: 100;
+  background: rgba(5, 11, 26, 0.96);
+  border-bottom: 1px solid #12213a;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-logo {
+  width: 260px;
+  height: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-links a {
+  position: relative;
+
+  color: #f2f5fa;
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -8px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #1cdaf2;
+  transform: translateY(-1px);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-links a.active {
+  color: #1cdaf2;
+}
+
+
+/* =========================
+   GENERAL
+   Shared structural rules used by the main page container.
+   ========================= */
+
+main {
+  width: 100%;
+}
+
+
+/* =========================================================
+   HOME PAGE
+   Controls the landing-page grid, technical background treatment,
+   hero typography, spacing, and decorative lighting effects.
+   ========================================================= */
+
+.home-section {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  min-height: calc(100vh - 95px);
+
+  display: flex;
+  align-items: center;
+
+  background-color: #050b1a;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 33, 58, 0.48) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.48) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+.home-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  top: -180px;
+  right: -180px;
+
+  background: radial-gradient(
+    circle,
+    rgba(26, 108, 240, 0.14) 0%,
+    rgba(28, 218, 242, 0.05) 38%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.home-section::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(5, 11, 26, 0.15),
+    rgba(5, 11, 26, 0.05),
+    rgba(5, 11, 26, 0.35)
+  );
+
+  pointer-events: none;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 100px 24px 120px;
+
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+
+  align-items: center;
+
+  gap: 90px;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.hero-label {
+  margin: 0 0 20px;
+
+  color: #1cdaf2;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+}
+
+.hero-copy h1 {
+  margin: 0 0 28px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(3rem, 5.8vw, 5.5rem);
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+.hero-copy h1 span {
+  display: block;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.hero-description {
+  max-width: 680px;
+
+  margin: 0 0 36px;
+
+  color: #9fb0c8;
+
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+
+
+/* =========================
+   HOME MISSION STATEMENT
+   Highlights the portfolio's engineering purpose without competing with
+   the main hero headline or primary navigation actions.
+   ========================= */
+
+.mission-statement {
+  max-width: 680px;
+
+  margin: -8px 0 32px;
+  padding: 16px 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(28, 218, 242, 0.055),
+    rgba(26, 108, 240, 0.045)
+  );
+
+  border-left: 2px solid #1cdaf2;
+  border-radius: 0 10px 10px 0;
+}
+
+.mission-statement > span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #1cdaf2;
+
+  font-size: 0.66rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.mission-statement p {
+  margin: 0;
+
+  color: #a9bad0;
+
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+/* =========================
+   SHARED BUTTONS
+   Reusable primary and secondary actions used throughout the portfolio,
+   including hover movement, borders, gradients, and focus presentation.
+   ========================= */
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 24px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.primary-button {
+  color: #f2f5fa;
+
+  border: 1px solid #1cdaf2;
+
+  background: linear-gradient(
+    135deg,
+    rgba(28, 218, 242, 0.17),
+    rgba(26, 108, 240, 0.17)
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(28, 218, 242, 0.05),
+    0 12px 30px rgba(26, 108, 240, 0.12);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 20px rgba(28, 218, 242, 0.15),
+    0 16px 36px rgba(26, 108, 240, 0.18);
+}
+
+.secondary-button {
+  color: #b6c4d8;
+
+  border: 1px solid #263b59;
+
+  background: rgba(9, 20, 38, 0.65);
+}
+
+.secondary-button:hover {
+  color: #f2f5fa;
+  border-color: #456184;
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   HOME TECH PANEL
+   Terminal-inspired summary panel used on the Home page to present
+   software engineering, full-stack, and AI focus areas.
+   ========================= */
+
+.tech-panel {
+  width: 100%;
+  overflow: hidden;
+
+  background: rgba(7, 17, 33, 0.88);
+
+  border: 1px solid #1d3454;
+  border-radius: 16px;
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(26, 108, 240, 0.08);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.tech-panel-header {
+  padding: 15px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #091426;
+
+  border-bottom: 1px solid #172a46;
+}
+
+.window-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.window-controls span {
+  width: 8px;
+  height: 8px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: #294360;
+}
+
+.window-controls span:first-child {
+  background: #1cdaf2;
+}
+
+.panel-title {
+  color: #667b98;
+
+  font-size: 0.76rem;
+
+  letter-spacing: 0.12em;
+}
+
+.tech-panel-body {
+  padding: 28px;
+}
+
+.tech-panel-body > p:first-child {
+  margin-top: 0;
+  margin-bottom: 26px;
+
+  color: #9fb0c8;
+
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.terminal-symbol {
+  color: #1cdaf2;
+}
+
+.terminal-command {
+  color: #f2f5fa;
+}
+
+.system-row {
+  padding: 13px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom: 1px solid #14243c;
+}
+
+.system-row span {
+  color: #6f849f;
+
+  font-size: 0.86rem;
+}
+
+.system-row strong {
+  color: #dce4ef;
+
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  text-align: right;
+}
+
+.system-row .status-active {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #1cdaf2;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1cdaf2;
+
+  box-shadow:
+    0 0 10px rgba(28, 218, 242, 0.7);
+}
+
+.circuit-divider {
+  position: relative;
+
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+}
+
+.circuit-divider::before {
+  content: "";
+
+  width: 75%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0,
+    transparent
+  );
+}
+
+.circuit-divider span {
+  width: 7px;
+  height: 7px;
+
+  margin-left: -2px;
+
+  border-radius: 50%;
+
+  background: #1a6cf0;
+
+  box-shadow:
+    0 0 10px rgba(26, 108, 240, 0.6);
+}
+
+.terminal-line {
+  margin: 0;
+
+  color: #8194ae;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.84rem;
+}
+
+
+/* =========================
+   HOME EXPLORE
+   Decorative scroll indicator that encourages users to continue
+   exploring beyond the landing content.
+   ========================= */
+
+.scroll-indicator {
+  position: absolute;
+  z-index: 3;
+
+  bottom: 28px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.scroll-indicator span {
+  color: #536a89;
+
+  font-size: 0.63rem;
+
+  letter-spacing: 0.22em;
+}
+
+.scroll-indicator div {
+  width: 1px;
+  height: 26px;
+
+  background: linear-gradient(
+    #1cdaf2,
+    transparent
+  );
+}
+
+
+/* =========================================================
+   ABOUT PAGE
+   Defines the profile layout, portrait presentation, biography content,
+   technical highlights, and résumé call-to-action.
+   ========================================================= */
+
+.about-section {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  min-height: calc(100vh - 95px);
+
+  padding: 90px 24px;
+
+  background-color: #050b1a;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+.about-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  left: -220px;
+  top: 80px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.08),
+    rgba(26, 108, 240, 0.04) 35%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.about-grid {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 0.7fr 1.3fr;
+
+  gap: 85px;
+
+  align-items: start;
+}
+
+.about-profile {
+  position: sticky;
+
+  top: 130px;
+}
+
+.profile-placeholder {
+  width: 100%;
+  max-width: 360px;
+
+  aspect-ratio: 4 / 5;
+
+  margin-bottom: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      rgba(18, 33, 58, 0.45) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.45) 1px,
+      transparent 1px
+    ),
+    #071121;
+
+  background-size: 35px 35px;
+
+  border: 1px solid #1d3454;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.28),
+    inset 0 0 50px rgba(26, 108, 240, 0.05);
+}
+
+.about-label {
+  margin: 0 0 12px;
+
+  color: #1cdaf2;
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+}
+
+.profile-details h1 {
+  margin: 0 0 15px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(2.7rem, 4vw, 4rem);
+
+  line-height: 1;
+}
+
+.about-role {
+  margin: 0;
+
+  color: #89a0bd;
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+}
+
+.about-content {
+  padding-top: 10px;
+}
+
+.about-content h2 {
+  max-width: 700px;
+
+  margin: 0 0 28px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(2rem, 3vw, 3.2rem);
+
+  line-height: 1.12;
+}
+
+.about-content > p {
+  max-width: 760px;
+
+  margin: 0 0 20px;
+
+  color: #9fb0c8;
+
+  font-size: 1.02rem;
+
+  line-height: 1.8;
+}
+
+.about-highlights {
+  margin: 38px 0;
+
+  display: grid;
+
+  gap: 14px;
+}
+
+.highlight-item {
+  padding: 20px;
+
+  display: grid;
+
+  grid-template-columns: 50px 1fr;
+
+  gap: 18px;
+
+  background: rgba(9, 20, 38, 0.82);
+
+  border: 1px solid #172a46;
+
+  border-radius: 12px;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.highlight-item:hover {
+  transform: translateX(4px);
+
+  border-color: #295079;
+}
+
+.highlight-item > span {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.8rem;
+}
+
+.highlight-item strong {
+  color: #f2f5fa;
+}
+
+.highlight-item p {
+  margin: 6px 0 0;
+
+  color: #8396b0;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   PROJECTS PAGE
+   Controls project showcase cards, screenshots, metrics, technology tags,
+   role/outcome details, action links, alternating layouts, and hover states.
+   ========================================================= */
+
+.projects-section {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+
+  padding: 100px 24px 140px;
+
+  background-color: #050b1a;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+.projects-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 900px;
+  height: 900px;
+
+  right: -300px;
+  top: 120px;
+
+  background: radial-gradient(
+    circle,
+    rgba(26, 108, 240, 0.14),
+    rgba(28, 218, 242, 0.05) 35%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.projects-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  left: -300px;
+  bottom: 300px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.projects-heading {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1250px;
+
+  margin: 0 auto 90px;
+}
+
+.projects-label {
+  margin: 0 0 16px;
+
+  color: #1cdaf2;
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+}
+
+.projects-heading h1 {
+  margin: 0 0 22px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+}
+
+.projects-intro {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: #8fa3bd;
+
+  font-size: 1.08rem;
+
+  line-height: 1.8;
+}
+
+.projects-list {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 110px;
+}
+
+.project-showcase {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 1.12fr 0.88fr;
+
+  gap: 55px;
+
+  align-items: center;
+
+  padding: 34px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(10, 24, 45, 0.97),
+    rgba(5, 12, 25, 0.94)
+  );
+
+  border: 1px solid #1c3554;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(26, 108, 240, 0.05);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.project-showcase::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    rgba(28, 218, 242, 0.035),
+    transparent 35%,
+    rgba(26, 108, 240, 0.04)
+  );
+
+  pointer-events: none;
+}
+
+.project-showcase:hover {
+  transform: translateY(-6px);
+
+  border-color: #28527c;
+
+  box-shadow:
+    0 45px 110px rgba(0, 0, 0, 0.42),
+    0 0 70px rgba(26, 108, 240, 0.08);
+}
+
+.project-reverse {
+  grid-template-columns: 0.88fr 1.12fr;
+}
+
+.project-reverse .project-image-button {
+  order: 2;
+}
+
+.project-reverse .project-content {
+  order: 1;
+}
+
+.project-image-button {
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.project-image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    #020712,
+    #071222
+  );
+
+  border: 1px solid #203b5d;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.32),
+    0 0 30px rgba(28, 218, 242, 0.04);
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
+}
+
+.project-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  background: rgba(2, 8, 18, 0.72);
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.project-image-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #04101e;
+
+  font-size: 2rem;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+}
+
+.project-image-overlay > span:last-child {
+  color: #eaf4ff;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.project-image-button:hover .project-image-overlay,
+.project-image-button:focus-visible .project-image-overlay {
+  opacity: 1;
+}
+
+.project-image-button:hover .project-image {
+  transform: scale(1.025);
+}
+
+.project-content {
+  position: relative;
+  z-index: 3;
+}
+
+.project-number {
+  margin-bottom: 18px;
+
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.project-type {
+  margin: 0 0 14px;
+
+  color: #7089aa;
+
+  font-size: 0.71rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.project-content h2 {
+  margin: 0 0 20px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(2.2rem, 3vw, 3.3rem);
+
+  line-height: 1;
+}
+
+.project-summary {
+  margin: 0 0 28px;
+
+  color: #9fb0c8;
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+}
+
+.project-metrics {
+  margin-bottom: 28px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+.project-metric {
+  padding: 14px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(10, 27, 48, 0.95),
+    rgba(6, 15, 30, 0.95)
+  );
+
+  border: 1px solid #1c3654;
+
+  border-radius: 10px;
+}
+
+.project-metric strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #1cdaf2;
+
+  font-size: 1.1rem;
+}
+
+.project-metric span {
+  color: #7187a3;
+
+  font-size: 0.7rem;
+}
+
+.project-tech {
+  margin-bottom: 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.project-tech span {
+  padding: 8px 11px;
+
+  color: #b9d5ee;
+
+  font-size: 0.76rem;
+  font-weight: 600;
+
+  background: linear-gradient(
+    135deg,
+    rgba(28, 218, 242, 0.07),
+    rgba(26, 108, 240, 0.08)
+  );
+
+  border: 1px solid #23456a;
+
+  border-radius: 999px;
+}
+
+.project-details {
+  display: grid;
+
+  gap: 14px;
+}
+
+.project-details > div {
+  position: relative;
+
+  padding: 17px 20px;
+
+  background: rgba(5, 13, 27, 0.75);
+
+  border: 1px solid #172d48;
+
+  border-radius: 12px;
+}
+
+.project-details > div::before {
+  content: "";
+
+  position: absolute;
+
+  width: 2px;
+
+  left: 0;
+  top: 17px;
+  bottom: 17px;
+
+  background: linear-gradient(
+    #1cdaf2,
+    #1a6cf0
+  );
+}
+
+.project-detail-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #1cdaf2;
+
+  font-size: 0.67rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.project-details p {
+  margin: 0;
+
+  color: #c0ccd9;
+
+  font-size: 0.9rem;
+
+  line-height: 1.62;
+}
+
+.project-actions {
+  margin-top: 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.project-explore-button,
+.project-link {
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border-radius: 8px;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.project-explore-button {
+  color: #04111f;
+
+  border: 1px solid #1cdaf2;
+
+  background: linear-gradient(
+    135deg,
+    #1cdaf2,
+    #168df1
+  );
+}
+
+.project-link {
+  color: #b9c9da;
+
+  border: 1px solid #294361;
+
+  background: rgba(8, 20, 37, 0.78);
+}
+
+.project-link-primary {
+  color: #dffaff;
+
+  border-color: #167b9c;
+}
+
+.project-explore-button:hover,
+.project-link:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PROJECT MODAL
+   Full-screen project case-study overlay with controlled scrolling,
+   large screenshots, metrics, engineering details, and external links.
+   ========================================================= */
+
+.project-modal-backdrop {
+  position: fixed;
+
+  z-index: 1000;
+
+  inset: 0;
+
+  padding: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(1, 5, 13, 0.84);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.project-modal {
+  width: min(1180px, 100%);
+
+  max-height: calc(100vh - 64px);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+    145deg,
+    rgba(8, 21, 40, 0.99),
+    rgba(3, 10, 23, 0.99)
+  );
+
+  border: 1px solid #23476c;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 50px 140px rgba(0, 0, 0, 0.72),
+    0 0 90px rgba(26, 108, 240, 0.09);
+}
+
+.project-modal-topbar {
+  min-height: 64px;
+
+  padding: 14px 18px 14px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(7, 19, 36, 0.97);
+
+  border-bottom: 1px solid #183552;
+}
+
+.project-modal-topbar > div {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.project-modal-number {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.76rem;
+
+  letter-spacing: 0.18em;
+}
+
+.project-modal-type {
+  color: #6f89aa;
+
+  font-size: 0.67rem;
+
+  letter-spacing: 0.14em;
+}
+
+.project-modal-close {
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9bb0c7;
+
+  background: #0a192d;
+
+  border: 1px solid #29415e;
+
+  border-radius: 9px;
+
+  font-size: 1.6rem;
+
+  cursor: pointer;
+}
+
+.project-modal-scroll {
+  padding: 32px;
+
+  overflow-y: auto;
+}
+
+.project-modal-image-frame {
+  width: 100%;
+
+  min-height: 300px;
+  max-height: 610px;
+
+  margin-bottom: 44px;
+
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    145deg,
+    #010611,
+    #071324
+  );
+
+  border: 1px solid #214567;
+
+  border-radius: 16px;
+}
+
+.project-modal-image-frame img {
+  width: 100%;
+
+  max-height: 590px;
+
+  object-fit: contain;
+
+  border-radius: 9px;
+}
+
+.project-modal-eyebrow {
+  margin: 0 0 10px;
+
+  color: #1cdaf2;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+}
+
+.project-modal-heading {
+  margin-bottom: 34px;
+}
+
+.project-modal-heading h2 {
+  margin: 0 0 18px;
+
+  color: #f3f7fc;
+
+  font-size: clamp(2.5rem, 5vw, 4.6rem);
+
+  line-height: 0.98;
+}
+
+.project-modal-heading > div > p:last-child {
+  max-width: 820px;
+
+  margin: 0;
+
+  color: #9cb0c8;
+
+  font-size: 1.05rem;
+
+  line-height: 1.75;
+}
+
+.project-modal-metrics {
+  margin-bottom: 34px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+.project-modal-metrics > div {
+  padding: 20px;
+
+  background: #091a30;
+
+  border: 1px solid #1d3d5e;
+
+  border-radius: 12px;
+}
+
+.project-modal-metrics strong {
+  display: block;
+
+  color: #1cdaf2;
+
+  font-size: 1.7rem;
+}
+
+.project-modal-metrics span {
+  color: #7187a3;
+
+  font-size: 0.76rem;
+}
+
+.project-modal-overview {
+  margin-bottom: 34px;
+
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 14px;
+}
+
+.project-modal-overview > div {
+  padding: 22px;
+
+  background: rgba(5, 14, 29, 0.78);
+
+  border: 1px solid #193553;
+
+  border-radius: 12px;
+}
+
+.project-modal-overview span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #1cdaf2;
+
+  font-size: 0.67rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.project-modal-overview p {
+  margin: 0;
+
+  color: #bccbd9;
+
+  line-height: 1.65;
+}
+
+.project-modal-tech {
+  margin-bottom: 42px;
+
+  padding-bottom: 36px;
+
+  border-bottom: 1px solid #16304b;
+}
+
+.project-modal-tech > p {
+  color: #6f89a8;
+
+  font-size: 0.68rem;
+
+  letter-spacing: 0.18em;
+}
+
+.project-modal-tech > div {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.project-modal-tech span {
+  padding: 9px 12px;
+
+  color: #c1dcf2;
+
+  background: rgba(13, 37, 62, 0.65);
+
+  border: 1px solid #285274;
+
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+}
+
+.project-case-study {
+  display: grid;
+
+  gap: 16px;
+}
+
+.project-case-section {
+  padding: 26px;
+
+  display: grid;
+
+  grid-template-columns: 55px 1fr;
+
+  gap: 20px;
+
+  background: #07182d;
+
+  border: 1px solid #183654;
+
+  border-radius: 14px;
+}
+
+.case-section-number {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.project-case-section h3 {
+  margin: 0 0 16px;
+
+  color: #eef5fc;
+}
+
+.project-case-section li {
+  margin-bottom: 10px;
+
+  color: #9eafc2;
+
+  line-height: 1.68;
+}
+
+.project-case-section li::marker {
+  color: #1cdaf2;
+}
+
+.project-modal-links {
+  margin-top: 36px;
+
+  padding-top: 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  border-top: 1px solid #16304b;
+}
+
+.project-modal-link {
+  padding: 12px 18px;
+
+  color: #b9ccdf;
+
+  background: #09192c;
+
+  border: 1px solid #294866;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+}
+
+.project-modal-link-primary {
+  color: #03101d;
+
+  background: linear-gradient(
+    135deg,
+    #1cdaf2,
+    #168df1
+  );
+}
+
+
+/* =========================================================
+   EDUCATION PAGE
+   Styles the degree summary, academic metrics, completed/current courses,
+   advanced technical focus cards, and integrated co-op pathway.
+   ========================================================= */
+
+.education-section {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+
+  padding: 100px 24px 140px;
+
+  background-color: #050b1a;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+.education-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 850px;
+  height: 850px;
+
+  top: -220px;
+  right: -280px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.09),
+    rgba(26, 108, 240, 0.07) 35%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.education-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  left: -280px;
+  bottom: 350px;
+
+  background: radial-gradient(
+    circle,
+    rgba(26, 108, 240, 0.09),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.education-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+.education-heading {
+  margin-bottom: 75px;
+}
+
+.education-label {
+  margin: 0 0 14px;
+
+  color: #1cdaf2;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+}
+
+.education-heading h1 {
+  margin: 0 0 24px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+}
+
+.education-heading > p:last-child {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: #8fa3bd;
+
+  font-size: 1.08rem;
+
+  line-height: 1.8;
+}
+
+.degree-showcase {
+  position: relative;
+
+  margin-bottom: 90px;
+
+  padding: 38px;
+
+  display: grid;
+
+  grid-template-columns: 1.15fr 0.85fr;
+
+  gap: 50px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(10, 25, 47, 0.97),
+    rgba(5, 13, 27, 0.96)
+  );
+
+  border: 1px solid #1d3b5c;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.32),
+    0 0 60px rgba(26, 108, 240, 0.05);
+}
+
+.degree-showcase::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -150px;
+  top: -170px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.11),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.degree-main,
+.education-metrics {
+  position: relative;
+  z-index: 2;
+}
+
+.degree-status {
+  width: fit-content;
+
+  margin-bottom: 28px;
+
+  padding: 8px 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #9beff8;
+
+  background: rgba(28, 218, 242, 0.07);
+
+  border: 1px solid rgba(28, 218, 242, 0.25);
+
+  border-radius: 999px;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+.education-status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1cdaf2;
+
+  box-shadow:
+    0 0 10px rgba(28, 218, 242, 0.75);
+}
+
+.degree-institution {
+  margin: 0 0 12px;
+
+  color: #718aa8;
+
+  font-size: 0.74rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.degree-main h2 {
+  margin: 0 0 18px;
+
+  color: #f4f7fb;
+
+  font-size: clamp(2.2rem, 4vw, 4rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+}
+
+.degree-main h2 span {
+  display: block;
+
+  margin-top: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.degree-credential {
+  margin: 0 0 22px;
+
+  color: #c0d0e1;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.degree-description {
+  max-width: 680px;
+
+  margin: 0 0 28px;
+
+  color: #91a6bf;
+
+  font-size: 0.98rem;
+
+  line-height: 1.75;
+}
+
+.degree-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.degree-tags span {
+  padding: 8px 11px;
+
+  color: #b8d8ed;
+
+  background: rgba(11, 37, 61, 0.7);
+
+  border: 1px solid #265072;
+
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.education-metrics {
+  display: grid;
+
+  gap: 12px;
+}
+
+.education-metric {
+  padding: 22px;
+
+  background: rgba(4, 14, 29, 0.82);
+
+  border: 1px solid #1b3958;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.education-metric:hover {
+  transform: translateX(4px);
+
+  border-color: #2b5f87;
+}
+
+.metric-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #7188a5;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.education-metric strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #1cdaf2;
+
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+
+  line-height: 1;
+}
+
+.education-metric p {
+  margin: 0;
+
+  color: #7e93ad;
+
+  font-size: 0.82rem;
+
+  line-height: 1.5;
+}
+
+.education-block {
+  margin-bottom: 95px;
+}
+
+.education-block-heading {
+  margin-bottom: 32px;
+
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  align-items: end;
+
+  gap: 45px;
+}
+
+.education-section-number {
+  margin: 0 0 10px;
+
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.education-block-heading h2 {
+  margin: 0;
+
+  color: #f1f5fa;
+
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+
+  letter-spacing: -0.025em;
+}
+
+.education-block-heading > p {
+  margin: 0;
+
+  color: #8ea2ba;
+
+  line-height: 1.7;
+}
+
+.course-chip-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.course-chip {
+  min-height: 58px;
+
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(8, 23, 41, 0.94),
+    rgba(5, 15, 30, 0.94)
+  );
+
+  border: 1px solid #1b3653;
+
+  border-radius: 10px;
+
+  color: #b9c8d8;
+
+  font-size: 0.9rem;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.course-chip:hover {
+  transform: translateY(-2px);
+
+  border-color: #2c5a7c;
+}
+
+.course-status-icon {
+  width: 24px;
+  height: 24px;
+
+  flex: 0 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #04131f;
+
+  background: #1cdaf2;
+
+  border-radius: 50%;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.current-course-grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 12px;
+}
+
+.current-course-card {
+  position: relative;
+
+  min-height: 155px;
+
+  padding: 20px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(10, 29, 52, 0.98),
+    rgba(5, 16, 32, 0.98)
+  );
+
+  border: 1px solid #204566;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.current-course-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  right: -45px;
+  bottom: -45px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.12),
+    transparent 70%
+  );
+}
+
+.current-course-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #34759d;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.current-course-top {
+  margin-bottom: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #1cdaf2;
+
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.active-course-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1cdaf2;
+
+  box-shadow:
+    0 0 12px rgba(28, 218, 242, 0.75);
+}
+
+.current-course-card h3 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #e9f0f7;
+
+  font-size: 0.96rem;
+
+  line-height: 1.4;
+}
+
+.future-focus-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.future-focus-card {
+  position: relative;
+
+  min-height: 235px;
+
+  padding: 24px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(9, 24, 44, 0.94),
+    rgba(5, 14, 28, 0.94)
+  );
+
+  border: 1px solid #193752;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.future-focus-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #2a5f83;
+}
+
+.future-focus-number {
+  display: block;
+
+  margin-bottom: 30px;
+
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.72rem;
+
+  letter-spacing: 0.16em;
+}
+
+.future-focus-card h3 {
+  margin: 0 0 14px;
+
+  color: #eef4fa;
+
+  font-size: 1.15rem;
+
+  line-height: 1.3;
+}
+
+.future-focus-card p {
+  margin: 0;
+
+  color: #8297af;
+
+  font-size: 0.88rem;
+
+  line-height: 1.65;
+}
+
+.coop-showcase {
+  position: relative;
+
+  padding: 34px;
+
+  display: grid;
+
+  grid-template-columns: 190px 1fr;
+
+  align-items: center;
+
+  gap: 40px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    120deg,
+    rgba(10, 34, 53, 0.96),
+    rgba(7, 19, 36, 0.97)
+  );
+
+  border: 1px solid #245171;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.22);
+}
+
+.coop-showcase::after {
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  right: -180px;
+  top: -180px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.1),
+    transparent 70%
+  );
+}
+
+.coop-icon {
+  position: relative;
+  z-index: 2;
+
+  height: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      rgba(28, 218, 242, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(28, 218, 242, 0.05) 1px,
+      transparent 1px
+    ),
+    #07182b;
+
+  background-size: 22px 22px;
+
+  border: 1px solid #295372;
+
+  border-radius: 14px;
+}
+
+.coop-icon span {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 1.3rem;
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+.coop-content {
+  position: relative;
+  z-index: 2;
+}
+
+.coop-content h2 {
+  margin: 0 0 15px;
+
+  color: #f1f6fb;
+
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+}
+
+.coop-content > p:last-child {
+  max-width: 800px;
+
+  margin: 0;
+
+  color: #93a7be;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   SERVICES PAGE
+   Presents engineering service areas, capability lists, technology stacks,
+   and the overall software-development workflow.
+   ========================================================= */
+
+.services-section {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+
+  padding: 100px 24px 140px;
+
+  background-color: #050b1a;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+.services-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 850px;
+  height: 850px;
+
+  top: -260px;
+  right: -300px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.11),
+    rgba(26, 108, 240, 0.05) 38%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.services-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  left: -330px;
+  bottom: 200px;
+
+  background: radial-gradient(
+    circle,
+    rgba(26, 108, 240, 0.09),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.services-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+.services-heading {
+  margin-bottom: 70px;
+}
+
+.services-label {
+  margin: 0 0 14px;
+
+  color: #1cdaf2;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+}
+
+.services-heading h1 {
+  margin: 0 0 24px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+}
+
+.services-heading > p:last-child {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: #8fa3bd;
+
+  font-size: 1.08rem;
+
+  line-height: 1.8;
+}
+
+.services-intro-panel {
+  position: relative;
+
+  margin-bottom: 80px;
+
+  padding: 36px;
+
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: center;
+
+  gap: 60px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    rgba(10, 30, 52, 0.96),
+    rgba(5, 15, 30, 0.96)
+  );
+
+  border: 1px solid #1e4162;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, 0.27);
+}
+
+.services-intro-panel::before {
+  content: "";
+
+  position: absolute;
+
+  width: 360px;
+  height: 360px;
+
+  left: -150px;
+  top: -170px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.11),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.services-intro-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+.services-intro-label {
+  margin: 0 0 14px;
+
+  color: #6f8eac;
+
+  font-size: 0.67rem;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+}
+
+.services-intro-panel h2 {
+  margin: 0;
+
+  color: #f1f6fb;
+
+  font-size: clamp(2rem, 3.8vw, 3.5rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.035em;
+}
+
+.services-intro-panel h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.services-intro-panel > p {
+  margin: 0;
+
+  color: #97abc1;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   SERVICES PROJECT VISUALS
+   Uses screenshots from real portfolio projects to connect the listed
+   engineering services with practical full-stack, AI, and systems work.
+   ========================= */
+
+.services-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 52px;
+}
+
+.service-visual-card {
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(8, 23, 43, 0.97),
+    rgba(4, 13, 27, 0.97)
+  );
+
+  border: 1px solid #1a3b5b;
+  border-radius: 16px;
+
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.service-visual-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #2b668d;
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.28),
+    0 0 38px rgba(26, 108, 240, 0.05);
+}
+
+.service-visual-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  background: #020712;
+
+  border-bottom: 1px solid #173651;
+}
+
+.service-visual-content {
+  padding: 20px;
+}
+
+.service-visual-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #1cdaf2;
+
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+}
+
+.service-visual-content strong {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #edf4fb;
+
+  font-size: 1.05rem;
+}
+
+.service-visual-content p {
+  margin: 0;
+
+  color: #849ab3;
+
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 95px;
+}
+
+.service-showcase-card {
+  position: relative;
+
+  min-height: 560px;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(9, 25, 46, 0.97),
+    rgba(5, 14, 28, 0.97)
+  );
+
+  border: 1px solid #1a3b5b;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.service-showcase-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -140px;
+  top: -140px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.service-showcase-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #2b668d;
+
+  box-shadow:
+    0 32px 75px rgba(0, 0, 0, 0.28),
+    0 0 45px rgba(26, 108, 240, 0.05);
+}
+
+.service-card-top {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.service-number {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+}
+
+.service-category {
+  color: #687f9d;
+
+  font-size: 0.63rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  text-align: right;
+}
+
+.service-showcase-card h2 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 0 18px;
+
+  color: #f1f5fa;
+
+  font-size: clamp(1.7rem, 2.8vw, 2.55rem);
+
+  line-height: 1.08;
+
+  letter-spacing: -0.025em;
+}
+
+.service-description {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #91a5bc;
+
+  line-height: 1.75;
+}
+
+.service-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 28px 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(28, 218, 242, 0.55),
+    rgba(26, 108, 240, 0.22),
+    transparent
+  );
+}
+
+.service-capabilities {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 28px;
+}
+
+.service-capabilities > p,
+.service-stack > p {
+  margin: 0 0 14px;
+
+  color: #657d9b;
+
+  font-size: 0.64rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+.service-capability-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 9px;
+}
+
+.service-capability {
+  min-height: 45px;
+
+  padding: 10px 11px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #b6c5d5;
+
+  background: rgba(5, 17, 32, 0.72);
+
+  border: 1px solid #193450;
+
+  border-radius: 8px;
+
+  font-size: 0.77rem;
+}
+
+.capability-marker {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.service-stack {
+  position: relative;
+  z-index: 2;
+
+  margin-top: auto;
+}
+
+.service-stack > div {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.service-stack span {
+  padding: 7px 10px;
+
+  color: #b8d5ea;
+
+  background: linear-gradient(
+    135deg,
+    rgba(28, 218, 242, 0.06),
+    rgba(26, 108, 240, 0.08)
+  );
+
+  border: 1px solid #245072;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+
+/* =========================
+   ENGINEERING SPECTRUM
+   Visual workflow showing progression from system design and development
+   through intelligence, validation, and production deployment.
+   ========================= */
+
+.engineering-spectrum {
+  position: relative;
+
+  padding: 38px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(9, 27, 47, 0.97),
+    rgba(5, 15, 29, 0.97)
+  );
+
+  border: 1px solid #1d4566;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, 0.24);
+}
+
+.engineering-spectrum::after {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  right: -200px;
+  bottom: -250px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.09),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.engineering-spectrum-heading {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 38px;
+}
+
+.engineering-spectrum-heading h2 {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #f1f6fb;
+
+  font-size: clamp(2rem, 3.5vw, 3rem);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.03em;
+}
+
+.engineering-flow {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr;
+
+  align-items: stretch;
+
+  gap: 10px;
+}
+
+.engineering-stage {
+  min-height: 180px;
+
+  padding: 18px;
+
+  background: rgba(4, 15, 30, 0.78);
+
+  border: 1px solid #1a3855;
+
+  border-radius: 12px;
+}
+
+.engineering-stage > span {
+  display: block;
+
+  margin-bottom: 28px;
+
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.16em;
+}
+
+.engineering-stage strong {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #eef4fa;
+
+  font-size: 1rem;
+}
+
+.engineering-stage p {
+  margin: 0;
+
+  color: #7f94ad;
+
+  font-size: 0.78rem;
+
+  line-height: 1.55;
+}
+
+.engineering-flow-line {
+  width: 25px;
+
+  align-self: center;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  opacity: 0.55;
+}
+
+
+/* =========================================================
+   CONTACT PAGE
+   Defines the contact-page background, heading hierarchy, professional
+   contact information, messaging form, and submission confirmation state.
+   ========================================================= */
+
+.contact-section {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+  min-height: calc(100vh - 95px);
+
+  padding: 100px 24px 140px;
+
+  background-color: #050b1a;
+
+  background-image:
+    linear-gradient(
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 33, 58, 0.34) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+.contact-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 850px;
+  height: 850px;
+
+  top: -280px;
+  right: -300px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.11),
+    rgba(26, 108, 240, 0.05) 38%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.contact-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  left: -300px;
+  bottom: 100px;
+
+  background: radial-gradient(
+    circle,
+    rgba(26, 108, 240, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+.contact-heading {
+  margin-bottom: 70px;
+}
+
+.contact-label {
+  margin: 0 0 14px;
+
+  color: #1cdaf2;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+}
+
+.contact-heading h1 {
+  margin: 0 0 24px;
+
+  color: #f2f5fa;
+
+  font-size: clamp(3.5rem, 6vw, 5.8rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+}
+
+.contact-heading > p:last-child {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: #8fa3bd;
+
+  font-size: 1.08rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   CONTACT LAYOUT
+   Two-column desktop structure that separates professional contact details
+   from the interactive message form.
+   ========================= */
+
+.contact-layout {
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: start;
+
+  gap: 28px;
+}
+
+.contact-information {
+  display: grid;
+
+  gap: 16px;
+}
+
+
+/* =========================
+   CONTACT INTRO
+   Introductory callout card used to frame the purpose of the contact page
+   and highlight availability for software and AI opportunities.
+   ========================= */
+
+.contact-intro-card,
+.contact-focus,
+.contact-form-panel {
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(9, 25, 46, 0.97),
+    rgba(5, 14, 28, 0.97)
+  );
+
+  border: 1px solid #1b3c5c;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.24);
+}
+
+.contact-intro-card {
+  padding: 32px;
+}
+
+.contact-intro-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  right: -130px;
+  top: -130px;
+
+  background: radial-gradient(
+    circle,
+    rgba(28, 218, 242, 0.1),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.contact-intro-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card-label {
+  margin: 0 0 12px;
+
+  color: #6d87a5;
+
+  font-size: 0.66rem;
+  font-weight: 700;
+
+  letter-spacing: 0.19em;
+}
+
+.contact-intro-card h2 {
+  margin: 0 0 20px;
+
+  color: #f1f6fb;
+
+  font-size: clamp(2rem, 3.3vw, 3rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.035em;
+}
+
+.contact-intro-card h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  background: linear-gradient(
+    90deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.contact-intro-card > p:last-child {
+  margin: 0;
+
+  color: #90a5bd;
+
+  line-height: 1.75;
+}
+
+
+/* =========================
+   CONTACT METHODS
+   Interactive email, LinkedIn, and GitHub cards with numbered labels,
+   hover feedback, and external-link actions.
+   ========================= */
+
+.contact-methods {
+  display: grid;
+
+  gap: 10px;
+}
+
+.contact-method {
+  min-height: 92px;
+
+  padding: 18px;
+
+  display: grid;
+
+  grid-template-columns: 42px 1fr auto;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  background: linear-gradient(
+    145deg,
+    rgba(8, 23, 42, 0.96),
+    rgba(5, 15, 30, 0.96)
+  );
+
+  border: 1px solid #1b3957;
+
+  border-radius: 13px;
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease;
+}
+
+.contact-method:hover {
+  transform: translateX(4px);
+
+  border-color: #2b668d;
+
+  background: linear-gradient(
+    145deg,
+    rgba(10, 30, 51, 0.98),
+    rgba(6, 18, 34, 0.98)
+  );
+}
+
+.contact-method-number {
+  color: #1cdaf2;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+.contact-method-content {
+  min-width: 0;
+}
+
+.contact-method-content span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #647e9b;
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.contact-method-content strong {
+  display: block;
+
+  overflow-wrap: anywhere;
+
+  color: #dbe6f0;
+
+  font-size: 0.91rem;
+  font-weight: 600;
+}
+
+.contact-method-action {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #89a0b8;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.contact-method:hover .contact-method-action {
+  color: #1cdaf2;
+}
+
+
+/* =========================
+   CONTACT FOCUS
+   Compact tags listing the technical areas most relevant to professional
+   opportunities and project discussions.
+   ========================= */
+
+.contact-focus {
+  padding: 24px;
+}
+
+.contact-focus-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.contact-focus-tags span {
+  padding: 8px 11px;
+
+  color: #b8d5ea;
+
+  background: linear-gradient(
+    135deg,
+    rgba(28, 218, 242, 0.06),
+    rgba(26, 108, 240, 0.08)
+  );
+
+  border: 1px solid #245072;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+
+/* =========================
+   CONTACT FORM PANEL
+   Container for the messaging interface, form heading, availability state,
+   and visual separation from the contact-information column.
+   ========================= */
+
+.contact-form-panel {
+  min-height: 100%;
+
+  padding: 32px;
+}
+
+.contact-form-panel::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  right: -180px;
+  bottom: -180px;
+
+  background: radial-gradient(
+    circle,
+    rgba(26, 108, 240, 0.1),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.contact-form-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-form-header {
+  margin-bottom: 30px;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.contact-form-header h2 {
+  margin: 0;
+
+  color: #f1f6fb;
+
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+
+  letter-spacing: -0.025em;
+}
+
+.contact-form-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 11px;
+
+  color: #83e8f4;
+
+  background: rgba(28, 218, 242, 0.06);
+
+  border: 1px solid rgba(28, 218, 242, 0.22);
+
+  border-radius: 999px;
+
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+.contact-form-status > span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1cdaf2;
+
+  box-shadow:
+    0 0 10px rgba(28, 218, 242, 0.75);
+}
+
+
+/* =========================
+   CONTACT FORM
+   Styles labels, required inputs, textarea, validation-ready controls,
+   submit action, and responsive field grouping.
+   ========================= */
+
+.contact-form-panel form {
+  margin: 0;
+}
+
+.contact-form-row {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+}
+
+.contact-form-panel .form-group {
+  margin-bottom: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.contact-form-panel .form-group label {
+  color: #aebdd0;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.contact-form-panel .form-group input,
+.contact-form-panel .form-group textarea {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  color: #f1f5fa;
+
+  background: rgba(4, 14, 29, 0.88);
+
+  border: 1px solid #1c3a58;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-form-panel .form-group input::placeholder,
+.contact-form-panel .form-group textarea::placeholder {
+  color: #536c88;
+}
+
+.contact-form-panel .form-group input:hover,
+.contact-form-panel .form-group textarea:hover {
+  border-color: #2a5274;
+}
+
+.contact-form-panel .form-group input:focus,
+.contact-form-panel .form-group textarea:focus {
+  border-color: #1cdaf2;
+
+  background: #07182b;
+
+  box-shadow:
+    0 0 0 3px rgba(28, 218, 242, 0.06);
+}
+
+.contact-form-panel .form-group textarea {
+  min-height: 175px;
+
+  resize: vertical;
+}
+
+.contact-submit-button {
+  width: 100%;
+
+  min-height: 50px;
+
+  padding: 0 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #03111d;
+
+  background: linear-gradient(
+    135deg,
+    #1cdaf2,
+    #168df1
+  );
+
+  border: 1px solid #1cdaf2;
+
+  border-radius: 9px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 28px rgba(28, 218, 242, 0.11);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-submit-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 34px rgba(28, 218, 242, 0.18);
+}
+
+.contact-form-note {
+  margin: 12px 0 0;
+
+  color: #5f7691;
+
+  font-size: 0.69rem;
+
+  text-align: center;
+}
+
+
+/* =========================
+   CONTACT SUCCESS
+   Confirmation state displayed after form submission while the application
+   prepares to redirect the visitor back to the Home page.
+   ========================= */
+
+.contact-success {
+  min-height: 430px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(28, 218, 242, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(28, 218, 242, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 30px 30px;
+
+  border: 1px solid #183b59;
+
+  border-radius: 14px;
+}
+
+.contact-success-icon {
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #04131f;
+
+  background: linear-gradient(
+    135deg,
+    #1cdaf2,
+    #1a6cf0
+  );
+
+  border-radius: 50%;
+
+  font-size: 1.6rem;
+  font-weight: 800;
+
+  box-shadow:
+    0 0 35px rgba(28, 218, 242, 0.22);
+}
+
+.contact-success h3 {
+  margin: 0 0 10px;
+
+  color: #eef5fb;
+
+  font-size: 1.7rem;
+}
+
+.contact-success p {
+  max-width: 390px;
+
+  margin: 0;
+
+  color: #8399b2;
+
+  line-height: 1.65;
+}
+
+
+/* =========================
+   FOOTER
+   Shared footer styling used consistently at the bottom of every route.
+   ========================= */
+
+footer {
+  padding: 28px 24px;
+
+  color: #71839d;
+
+  background: #050b1a;
+
+  border-top: 1px solid #12213a;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   Breakpoints progressively simplify grids, spacing, navigation, modals,
+   cards, and forms for laptop, tablet, and mobile screen widths.
+   ========================================================= */
+
+/* Large tablet / compact desktop: collapse wide project layouts and reduce multi-column grids. */
+@media (max-width: 1100px) {
+  .project-showcase,
+  .project-reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .project-reverse .project-image-button,
+  .project-reverse .project-content {
+    order: initial;
+  }
+
+  .current-course-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .future-focus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .engineering-flow {
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 10px;
+  }
+
+  .engineering-flow-line {
+    display: none;
+  }
+}
+
+
+/* Tablet: move major two-column page sections into a single-column reading flow. */
+@media (max-width: 950px) {
+  .home-content {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .about-profile {
+    position: static;
+
+    display: grid;
+
+    grid-template-columns: 240px 1fr;
+
+    align-items: center;
+
+    gap: 30px;
+  }
+
+  .degree-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .education-block-heading {
+    grid-template-columns: 1fr;
+
+    align-items: start;
+
+    gap: 18px;
+  }
+
+  .services-intro-panel {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  /* Stack service screenshots for comfortable tablet reading. */
+  .services-visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-showcase-card {
+    min-height: auto;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Small tablet: stack navigation, tighten page spacing, and simplify dense content layouts. */
+@media (max-width: 850px) {
+  .navbar {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .site-logo {
+    width: 220px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+
+    gap: 14px 18px;
+  }
+
+  .home-section,
+  .about-section,
+  .projects-section,
+  .education-section,
+  .services-section,
+  .contact-section {
+    background-size: 45px 45px;
+  }
+
+  .projects-section,
+  .education-section,
+  .services-section,
+  .contact-section {
+    padding-top: 70px;
+  }
+
+  .project-showcase {
+    padding: 22px;
+  }
+
+  .project-modal-backdrop {
+    padding: 15px;
+  }
+
+  .project-modal-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .course-chip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coop-showcase {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .coop-icon {
+    height: 100px;
+  }
+
+  .engineering-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* Mobile: use single-column cards, full-width actions, compact spacing, and a full-screen project modal. */
+@media (max-width: 650px) {
+  .hero-copy h1 {
+    font-size: 3rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .about-profile {
+    display: block;
+  }
+
+  .profile-placeholder {
+    max-width: 280px;
+
+    margin-bottom: 28px;
+  }
+
+  .project-showcase {
+    padding: 16px;
+
+    border-radius: 18px;
+  }
+
+  .project-metrics,
+  .project-modal-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-explore-button,
+  .project-link {
+    width: 100%;
+  }
+
+  .project-modal-backdrop {
+    padding: 0;
+  }
+
+  .project-modal {
+    width: 100%;
+    height: 100%;
+
+    max-height: 100vh;
+
+    border: 0;
+
+    border-radius: 0;
+  }
+
+  .project-modal-scroll {
+    padding: 18px;
+  }
+
+  .project-case-section {
+    grid-template-columns: 1fr;
+  }
+
+  .degree-showcase {
+    padding: 22px;
+  }
+
+  .degree-main h2 {
+    font-size: 2.35rem;
+  }
+
+  .current-course-grid,
+  .future-focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .current-course-card {
+    min-height: 120px;
+  }
+
+  .education-block {
+    margin-bottom: 70px;
+  }
+
+  .coop-showcase {
+    padding: 22px;
+  }
+
+  .services-intro-panel,
+  .engineering-spectrum {
+    padding: 22px;
+  }
+
+  /* Keep service project visuals compact on narrow phone screens. */
+  .service-visual-content {
+    padding: 18px;
+  }
+
+  .service-visual-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .service-showcase-card {
+    padding: 22px;
+  }
+
+  .service-capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .engineering-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .engineering-stage {
+    min-height: auto;
+  }
+
+  .contact-section {
+    padding: 70px 18px 100px;
+  }
+
+  .contact-heading {
+    margin-bottom: 50px;
+  }
+
+  .contact-intro-card,
+  .contact-form-panel {
+    padding: 22px;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .contact-method {
+    grid-template-columns: 35px 1fr;
+  }
+
+  .contact-method-action {
+    grid-column: 2;
+
+    margin-top: -5px;
+  }
+
+  .contact-form-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+
+/* Accessibility: minimize animation and transition motion when requested by the user's system settings. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+  }
+}

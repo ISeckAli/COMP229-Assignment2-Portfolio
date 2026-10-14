@@ -1,0 +1,48 @@
+/* Global reset and base sizing for the application. */
+* {
+  box-sizing: border-box;
+}
+
+/* Enable smooth scrolling for in-page browser navigation. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base typography, sizing, and portfolio colour theme. */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background: #050b1a;
+  color: #f2f5fa;
+}
+
+/* Ensure the React application fills the available page area. */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Allow links to inherit colour from their surrounding component styles. */
+a {
+  color: inherit;
+}
+
+/* Keep interactive form controls consistent with the site typography. */
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* Prevent images from overflowing responsive containers. */
+img {
+  max-width: 100%;
+}

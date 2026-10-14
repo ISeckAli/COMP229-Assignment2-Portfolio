@@ -1,0 +1,15 @@
+# Node dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Keep a safe example environment file if we create one
+!.env.example
+
+# Editor/local history
+.history/
+
+# Production build output
+dist/
